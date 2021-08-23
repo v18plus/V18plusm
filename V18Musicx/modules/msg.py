@@ -35,11 +35,11 @@ f"""
 f"""
 **Pengaturan**
 
-1. Jadikan bot sebagai admin
+1. Jadikan BOT @v18plusm_bot dan @{ASSISTANT_NAME} sebagai admin
 2. Mulai obrolan suara / VCG
 3. Ketik `/userbotjoin` dan coba /play <nama lagu>
 × Jika Assistant Bot bergabung selamat menikmati musik, 
-× Jika Assistant Bot tidak bergabung Silahkan Tambahkan @{ASSISTANT_NAME} ke grup Anda dan coba lagi
+× Jika Assistant Bot tidak bergabung Silahkan Tambahkan @{ASSISTANT_NAME} dan Ubah menjadi Admin di dalam grup Anda dan coba lagi
 × Owner bot @graclex
 
 

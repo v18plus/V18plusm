@@ -53,7 +53,7 @@ async def update_admin(client, message):
                 ]
             ]
         )
-    )
+  
 
 @Client.on_message(filters.command("auth"))
 @authorized_users_only

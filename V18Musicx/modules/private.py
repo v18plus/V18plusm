@@ -57,6 +57,9 @@ Join Groups
 ❃ Channel 18+ 🔞  [V18Plus](https://t.me/vtiktok18b)
 ━━━━━━━━━━━━━━━
 Ingin Menambahkan Saya ke Grup Anda? Tambahkan Saya Ke Group Anda!
+
+nb: **Agar BOT Music Dapat berjalan, Pastikan @v18plusm_bot dan @v18plusmusic Telah menjadi admin di group anda.**
+Lebih lengkap ketik /help 
 </b>""",
 
 # Edit Yang Perlu Lu ganti 

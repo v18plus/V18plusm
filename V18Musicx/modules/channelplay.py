@@ -526,7 +526,7 @@ async def play(_, message: Message):
                 ],
                 [
                     InlineKeyboardButton("💞 Group", url="https://t.me/viraltiktokgroups"),
-                    InlineKeyboardButton("🥰 OWNER", url="https://t.me/graclex"),,
+                    InlineKeyboardButton("🥰 OWNER", url="https://t.me/graclex"),
                 ],
                 [
                     InlineKeyboardButton(text="❌ Close", callback_data="ccls")

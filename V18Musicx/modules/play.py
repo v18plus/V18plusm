@@ -588,7 +588,7 @@ async def play(_, message: Message):
             title = results[0]["title"][:40]
             thumbnail = results[0]["thumbnails"][0]
             thumb_name = f"thumb{title}.jpg"
-            thumb = requests.get(thumbnail, allow_redirects=False)
+            thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, "wb").write(thumb.content)
             duration = results[0]["duration"]
             results[0]["url_suffix"]
@@ -681,7 +681,7 @@ async def play(_, message: Message):
                 title = results[0]["title"][:40]
                 thumbnail = results[0]["thumbnails"][0]
                 thumb_name = f"thumb{title}.jpg"
-                thumb = requests.get(thumbnail, allow_redirects=False)
+                thumb = requests.get(thumbnail, allow_redirects=True)
                 open(thumb_name, "wb").write(thumb.content)
                 duration = results[0]["duration"]
                 results[0]["url_suffix"]
@@ -837,7 +837,7 @@ async def ytplay(_, message: Message):
         title = results[0]["title"][:40]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
-        thumb = requests.get(thumbnail, allow_redirects=False)
+        thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
         duration = results[0]["duration"]
         results[0]["url_suffix"]
@@ -1124,7 +1124,7 @@ async def lol_cb(b, cb):
         pass
     try:
         thumb_name = f"thumb{title}.jpg"
-        thumb = requests.get(thumbnail, allow_redirects=False)
+        thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
     except Exception as e:
         print(e)
